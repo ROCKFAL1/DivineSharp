@@ -43,7 +43,9 @@ namespace RockRubick
             AbilityId.skeleton_king_vampiric_aura,
             AbilityId.slark_pounce,
             AbilityId.slark_shadow_dance,
-            AbilityId.slark_dark_pact
+            AbilityId.slark_dark_pact,
+            AbilityId.morphling_morph_agi,
+            AbilityId.morphling_morph_str
         };
 
         public static List<AbilityId> Ignore = new List<AbilityId> {
@@ -57,7 +59,9 @@ namespace RockRubick
             AbilityId.skeleton_king_vampiric_aura,
             AbilityId.slark_pounce,
             AbilityId.slark_shadow_dance,
-            AbilityId.slark_dark_pact
+            AbilityId.slark_dark_pact,
+            AbilityId.morphling_morph_agi,
+            AbilityId.morphling_morph_str
         };
 
         public static readonly Dictionary<AbilityId, int> SpellList = new Dictionary<AbilityId, int>

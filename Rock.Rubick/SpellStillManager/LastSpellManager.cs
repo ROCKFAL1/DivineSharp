@@ -92,22 +92,24 @@ namespace RockRubick
         private static void InGameUpdate()
         {
             var main = General.localHero.Spellbook.Spell4;
-            foreach (var enemy in EntityManager.GetEntities<Hero>().Where(x => x.IsEnemy(General.localHero) && !x.IsIllusion && x.Spellbook.Spells.Any(y => y.IsInAbilityPhase)))
+            foreach (var enemy in EntityManager.GetEntities<Hero>().Where(x => x.IsEnemy(General.localHero) && !x.IsIllusion /*&& x.Spellbook.Spells.Any(y => y.IsInAbilityPhase)*/))
             {
+
                 Spell ability = enemy.Spellbook.Spells.Where(x => x.IsInAbilityPhase).FirstOrDefault();
+
                 if (enemy == null || ability == null || main == ability || !enemy.IsVisible)
                 {
                     continue;
                 }
                 var e = enemy;
-                var cp = ability.CastPoint;
+                var cp = ability.GetCastPoint();
                 if (!enemy.Spellbook.Spells.Any(x => Dictionaries.LastSpell.ContainsKey(enemy)))
                 {
-                    if (cp * 1000 > 100)
+                    if (cp * 1000 > 50)
                     {
-                        UpdateManager.BeginInvoke((int)(cp * 1000 - 100), () =>
+                        UpdateManager.BeginInvoke((int)(cp * 1000 - 50), () =>
                         {
-                            if (ability.IsInAbilityPhase)
+                            if (ability.IsInAbilityPhase /*|| GameManager.GameTime - ability.CastStartTime + ability.CastPoint > 0 && GameManager.GameTime - ability.CastStartTime + ability.CastPoint < 0.1*/)
                             {
                                 Dictionaries.LastSpell.Add(enemy, ability.Id);
                             }
@@ -121,11 +123,11 @@ namespace RockRubick
                 }
                 else
                 {
-                    if (cp * 1000 > 100)
+                    if (cp * 1000 > 50)
                     {
-                        UpdateManager.BeginInvoke((int)(ability.CastPoint * 1000 - 100), () =>
+                        UpdateManager.BeginInvoke((int)(cp * 1000 - 50), () =>
                         {
-                            if (ability.IsInAbilityPhase)
+                            if (ability.IsInAbilityPhase/* ||  GameManager.GameTime - ability.CastStartTime + ability.CastPoint > 0 && GameManager.GameTime - ability.CastStartTime + ability.CastPoint < 0.1*/)
                             {
                                 Dictionaries.LastSpell.Remove(enemy);
                                 Dictionaries.LastSpell.Add(enemy, ability.Id);
