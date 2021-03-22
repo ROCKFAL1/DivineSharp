@@ -92,7 +92,7 @@ namespace RockRubick
         private static void InGameUpdate()
         {
             var main = General.localHero.Spellbook.Spell4;
-            foreach (var enemy in EntityManager.GetEntities<Hero>().Where(x => x.IsEnemy(General.localHero) && !x.IsIllusion /*&& x.Spellbook.Spells.Any(y => y.IsInAbilityPhase)*/))
+            foreach (var enemy in EntityManager.GetEntities<Hero>().Where(x => x.IsEnemy(General.localHero) && !x.IsIllusion && x.Spellbook.Spells.Any(y => y.IsInAbilityPhase)))
             {
 
                 Spell ability = enemy.Spellbook.Spells.Where(x => x.IsInAbilityPhase).FirstOrDefault();
