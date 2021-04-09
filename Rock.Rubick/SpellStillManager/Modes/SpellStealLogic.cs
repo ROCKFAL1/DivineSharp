@@ -2,6 +2,7 @@
 using Divine.SDK.Extensions;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace RockRubick
 {
@@ -39,6 +40,19 @@ namespace RockRubick
             {
                 General.sleeper.Sleep(750);
                 ult.Cast(lastSpell.Key);
+                Task.Run(async () =>
+                {
+                    await Task.Delay(200);
+                    if (ult.Cooldown != 0)
+                    {
+                        Dictionaries.LastSpell.Remove(lastSpell.Key);
+                        await Task.Delay((int)(General.localHero.Spellbook.Spell4.Cooldown * 1000 + 500));
+                        if (!Dictionaries.LastSpell.Any(x => x.Key == lastSpell.Key && x.Value == lastSpell.Value))
+                        {
+                            Dictionaries.LastSpell.Add(lastSpell.Key, lastSpell.Value);
+                        }
+                    }
+                });
                 return;
             }
 
@@ -59,7 +73,20 @@ namespace RockRubick
             {
                 General.sleeper.Sleep(750);
                 ult.Cast(lastSpell.Key);
+                Task.Run(async () =>
+                {
+                    await Task.Delay(200);
+                    if (ult.Cooldown != 0)
+                    {
+                        Dictionaries.LastSpell.Remove(lastSpell.Key);
+                        await Task.Delay((int)(General.localHero.Spellbook.Spell4.Cooldown * 1000 + 500));
+                        if (!Dictionaries.LastSpell.Any(x => x.Key == lastSpell.Key && x.Value == lastSpell.Value))
+                        {
+                            Dictionaries.LastSpell.Add(lastSpell.Key, lastSpell.Value);
+                        }
+                    }
 
+                });
             }
         }
     }

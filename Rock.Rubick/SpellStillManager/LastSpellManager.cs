@@ -85,7 +85,7 @@ namespace RockRubick
                 AddSpecific(hero, AbilityId.pudge_rot);
                 return;
             }
-            
+
             //Console.WriteLine($"{e.Particle.Owner.Name} | {e.Particle.Name}");
         }
 
@@ -103,32 +103,13 @@ namespace RockRubick
                 }
                 var e = enemy;
                 var cp = ability.GetCastPoint();
-                if (!enemy.Spellbook.Spells.Any(x => Dictionaries.LastSpell.ContainsKey(enemy)))
+                //if (!enemy.Spellbook.Spells.Any(x => Dictionaries.LastSpell.ContainsKey(enemy)))
                 {
                     if (cp * 1000 > 50)
                     {
                         UpdateManager.BeginInvoke((int)(cp * 1000 - 50), () =>
                         {
-                            if (ability.IsInAbilityPhase /*|| GameManager.GameTime - ability.CastStartTime + ability.CastPoint > 0 && GameManager.GameTime - ability.CastStartTime + ability.CastPoint < 0.1*/)
-                            {
-                                Dictionaries.LastSpell.Add(enemy, ability.Id);
-                            }
-                        });
-                    }
-                    else
-                    {
-                        Dictionaries.LastSpell.Remove(enemy);
-                        Dictionaries.LastSpell.Add(enemy, ability.Id);
-                    }
-
-                }
-                else
-                {
-                    if (cp * 1000 > 50)
-                    {
-                        UpdateManager.BeginInvoke((int)(cp * 1000 - 50), () =>
-                        {
-                            if (ability.IsInAbilityPhase/* ||  GameManager.GameTime - ability.CastStartTime + ability.CastPoint > 0 && GameManager.GameTime - ability.CastStartTime + ability.CastPoint < 0.1*/)
+                            if (ability.IsInAbilityPhase)
                             {
                                 Dictionaries.LastSpell.Remove(enemy);
                                 Dictionaries.LastSpell.Add(enemy, ability.Id);
@@ -140,8 +121,8 @@ namespace RockRubick
                         Dictionaries.LastSpell.Remove(enemy);
                         Dictionaries.LastSpell.Add(enemy, ability.Id);
                     }
-                }
 
+                }
             }
 
             for (int i = 0; i < Dictionaries.LastSpell.Count; i++)

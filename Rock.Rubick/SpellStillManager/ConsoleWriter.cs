@@ -7,10 +7,10 @@ namespace RockRubick
     {
         public ConsoleWriter()
         {
-            UpdateManager.CreateIngameUpdate(1000, cw);
+            UpdateManager.CreateIngameUpdate(1000, Cw);
         }
 
-        private void cw()
+        private void Cw()
         {
 
             foreach (var v in Dictionaries.LastSpell)
