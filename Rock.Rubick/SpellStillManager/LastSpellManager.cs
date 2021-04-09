@@ -2,6 +2,7 @@
 using Divine.SDK.Extensions;
 using System;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace RockRubick
 {
@@ -107,8 +108,9 @@ namespace RockRubick
                 {
                     if (cp * 1000 > 50)
                     {
-                        UpdateManager.BeginInvoke((int)(cp * 1000 - 50), () =>
+                        Task.Run(async () =>
                         {
+                            await Task.Delay((int)(cp * 1000 - 75));
                             if (ability.IsInAbilityPhase)
                             {
                                 Dictionaries.LastSpell.Remove(enemy);
