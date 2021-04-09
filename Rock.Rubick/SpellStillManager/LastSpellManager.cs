@@ -117,6 +117,7 @@ namespace RockRubick
                     }
                     else
                     {
+                        Dictionaries.LastSpell.Remove(enemy);
                         Dictionaries.LastSpell.Add(enemy, ability.Id);
                     }
 
