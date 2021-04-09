@@ -14,7 +14,7 @@ namespace RockRubick
             var ult = General.localHero.Spellbook.Spell6;
             float range = ult.CastRange;
 
-            if (Dictionaries.LastSpell == null || Dictionaries.LastSpell.Count == 0)
+            if (Dictionaries.LastSpell == null || Dictionaries.LastSpell.Count == 0 || (General.localHero.UnitState & UnitState.Invisible) == UnitState.Invisible)
             {
                 return;
             }
@@ -26,7 +26,7 @@ namespace RockRubick
 
             KeyValuePair<Hero, AbilityId> lastSpell = new KeyValuePair<Hero, AbilityId>();
 
-            lastSpell = Dictionaries.LastSpell.Where(x => x.Key.IsVisible && x.Value != main.Id && x.Key.Distance2D(General.localHero) < range && (x.Key.GetAbilityById(x.Value).Level + 1 >= main.Level
+            lastSpell = Dictionaries.LastSpell.Where(x => x.Key.IsVisible && !x.Key.IsLinkensProtected() && x.Value != main.Id && x.Key.Distance2D(General.localHero) < range && (x.Key.GetAbilityById(x.Value).Level + 1 >= main.Level
             || Dictionaries.SpellList.Where(y => y.Key == main.Id)
                                      .FirstOrDefault().Value >= 2) && !Dictionaries.Ignore.Contains(x.Value)).FirstOrDefault();
 
@@ -80,8 +80,9 @@ namespace RockRubick
                     {
                         Dictionaries.LastSpell.Remove(lastSpell.Key);
                         await Task.Delay((int)(General.localHero.Spellbook.Spell4.Cooldown * 1000 + 500));
-                        if (!Dictionaries.LastSpell.Any(x => x.Key == lastSpell.Key && x.Value == lastSpell.Value))
+                        if (!Dictionaries.LastSpell.Any(x => x.Key == lastSpell.Key && x.Value != lastSpell.Value))
                         {
+                            Dictionaries.LastSpell.Remove(lastSpell.Key);
                             Dictionaries.LastSpell.Add(lastSpell.Key, lastSpell.Value);
                         }
                     }
