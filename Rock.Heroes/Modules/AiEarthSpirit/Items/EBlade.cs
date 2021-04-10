@@ -18,6 +18,7 @@ namespace RockHeroes.Modules.EarthSpirit
                 && hero.Inventory.MainItems.Where(x => x.Id == item).FirstOrDefault().Cooldown == 0)
             {
                 ItemsHelper.CastItemEnemy(hero, target, item);
+                sleeper.Sleep(100);
             }
         }
     }

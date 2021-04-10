@@ -24,47 +24,27 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Divine">
-      <HintPath>D:\Hacks\Divine\References\Divine.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\Program Files\Divine\References\Divine.dll</HintPath>
     </Reference>
     <Reference Include="Divine.Menu">
-      <HintPath>D:\Hacks\Divine\References\Divine.Menu.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\Program Files\Divine\References\Divine.Menu.dll</HintPath>
     </Reference>
     <Reference Include="Divine.SDK">
-      <HintPath>D:\Hacks\Divine\References\Divine.SDK.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\Program Files\Divine\References\Divine.SDK.dll</HintPath>
     </Reference>
     <Reference Include="Divine.Zero">
-      <HintPath>D:\Hacks\Divine\References\Divine.Zero.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\Program Files\Divine\References\Divine.Zero.dll</HintPath>
     </Reference>
-    <Reference Include="DotNetZip">
-      <HintPath>D:\Hacks\Divine\References\DotNetZip.dll</HintPath>
-    </Reference>
-    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+    <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>D:\Hacks\Divine\References\Newtonsoft.Json.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\Program Files\Divine\References\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="SharpDX">
-      <HintPath>D:\Hacks\Divine\References\SharpDX.dll</HintPath>
-    </Reference>
-    <Reference Include="SharpDX.Direct2D1">
-      <HintPath>D:\Hacks\Divine\References\SharpDX.Direct2D1.dll</HintPath>
-    </Reference>
-    <Reference Include="SharpDX.Direct3D11">
-      <HintPath>D:\Hacks\Divine\References\SharpDX.Direct3D11.dll</HintPath>
-    </Reference>
-    <Reference Include="SharpDX.DXGI">
-      <HintPath>D:\Hacks\Divine\References\SharpDX.DXGI.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\Program Files\Divine\References\SharpDX.dll</HintPath>
     </Reference>
     <Reference Include="SharpDX.Mathematics">
-      <HintPath>D:\Hacks\Divine\References\SharpDX.Mathematics.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\Program Files\Divine\References\SharpDX.Mathematics.dll</HintPath>
     </Reference>
-    <Reference Include="System" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Net.Http" />
-    <Reference Include="System.Xml" />
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
@@ -80,7 +60,6 @@
     <Compile Include="Modules\AiEarthSpirit\Items\Shivas_guard.cs" />
     <Compile Include="Modules\AiEarthSpirit\Items\ItemsHelper.cs" />
     <Compile Include="Modules\AiEarthSpirit\Items\Veil_of_discord.cs" />
-    <Compile Include="Modules\AutoHook.cs" />
     <Compile Include="Modules\SfRazes.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
