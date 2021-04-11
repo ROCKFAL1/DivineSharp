@@ -2,6 +2,7 @@
 using Divine.SDK.Extensions;
 using Divine.SDK.Prediction;
 using SharpDX;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -60,6 +61,21 @@ namespace DawnBreaker_SkillHelper
             return default;
         }
 
+        private bool IsRunningBackward(Vector3 EnemyPos, Vector3 PredictPoint)
+        {
+            var count = Math.Floor(EnemyPos.Distance2D(PredictPoint) / 100);
+            for (int i = 0; i < count; i++)
+            {
+                var extendetPos = PredictPoint.Extend(EnemyPos, 100 * i);
+                if (Context.Dawnbreaker.LocalHero.IsInRange(extendetPos, 100))
+                {
+                    return true;
+                }
+            }
+            return false;
+
+        }
+
         private void OrderManager_OrderAdding(OrderAddingEventArgs e)
         {
             
@@ -83,13 +99,13 @@ namespace DawnBreaker_SkillHelper
 
             var input = new PredictionInput
             {
-                Speed = 220,
+                Speed = 215 * 1.1f,
                 Owner = Context.Dawnbreaker.LocalHero,
                 AreaOfEffectHitMainTarget = true,
                 AreaOfEffect = true,
                 AreaOfEffectTargets = Targets,
                 PredictionSkillshotType = PredictionSkillshotType.SkillshotCircle,
-                Radius = 250,
+                Radius = 200,
                 Delay = 0.5f,
                 CollisionTypes = Divine.SDK.Prediction.Collision.CollisionTypes.None
             };
@@ -97,6 +113,12 @@ namespace DawnBreaker_SkillHelper
             input = input.WithTarget(mainTarget);
 
             var predict = PredictionManager.GetPrediction(input).CastPosition;
+
+            if (IsRunningBackward(mainTarget.Position, predict))
+            {
+                Context.Dawnbreaker.Starbreaker.Cast(mainTarget.Position.Extend(predict, mainTarget.Position.Distance2D(predict) / 3), false, true);
+                return;
+            }
 
             Context.Dawnbreaker.Starbreaker.Cast(predict, false, true);
 
