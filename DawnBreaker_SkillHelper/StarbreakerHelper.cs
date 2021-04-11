@@ -116,7 +116,7 @@ namespace DawnBreaker_SkillHelper
 
             if (IsRunningBackward(mainTarget.Position, predict))
             {
-                Context.Dawnbreaker.Starbreaker.Cast(mainTarget.Position.Extend(predict, mainTarget.Position.Distance2D(predict) / 4), false, true);
+                Context.Dawnbreaker.Starbreaker.Cast(mainTarget.Position.Extend(predict, mainTarget.Position.Distance2D(predict) / 3), false, true);
                 return;
             }
 
