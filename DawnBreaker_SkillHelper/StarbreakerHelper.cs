@@ -68,7 +68,7 @@ namespace DawnBreaker_SkillHelper
                 return;
             }
 
-           var Targets = EntityManager.GetEntities<Hero>()
+            var Targets = EntityManager.GetEntities<Hero>()
                 .Where(x => x.Distance2D(Context.Dawnbreaker.LocalHero.Position) < Distance
                             && x.IsAlive
                             && x.IsEnemy(Context.Dawnbreaker.LocalHero)

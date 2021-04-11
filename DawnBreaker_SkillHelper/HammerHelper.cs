@@ -72,7 +72,7 @@ namespace DawnBreaker_SkillHelper
 
             var predictPos = PredictionManager.GetPrediction(input).CastPosition;
             var pos = Context.Dawnbreaker.LocalHero.Distance2D(predictPos);
-            var predict = Context.Dawnbreaker.LocalHero.Position.Extend(predictPos,  pos * 1.8f > range ? range : pos * 1.8f);
+            var predict = Context.Dawnbreaker.LocalHero.Position.Extend(predictPos,  pos * 1.65f > range ? range : pos * 1.65f);
 
             Context.Dawnbreaker.Hammer.Cast(predict, false, true);
 
