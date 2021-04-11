@@ -67,7 +67,7 @@ namespace DawnBreaker_SkillHelper
             for (int i = 0; i < count; i++)
             {
                 var extendetPos = PredictPoint.Extend(EnemyPos, 100 * i);
-                if (Context.Dawnbreaker.LocalHero.IsInRange(extendetPos, 100))
+                if (Context.Dawnbreaker.LocalHero.IsInRange(extendetPos, 150))
                 {
                     return true;
                 }
@@ -116,7 +116,7 @@ namespace DawnBreaker_SkillHelper
 
             if (IsRunningBackward(mainTarget.Position, predict))
             {
-                Context.Dawnbreaker.Starbreaker.Cast(mainTarget.Position.Extend(predict, mainTarget.Position.Distance2D(predict) / 3), false, true);
+                Context.Dawnbreaker.Starbreaker.Cast(mainTarget.Position.Extend(predict, mainTarget.Position.Distance2D(predict) / 4), false, true);
                 return;
             }
 
