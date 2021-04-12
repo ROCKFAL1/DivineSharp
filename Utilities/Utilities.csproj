@@ -12,6 +12,7 @@
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
+    <PostBuildEvent>if exist "C:\Program Files\Divine\Divine.exe" call "C:\Program Files\Divine\Divine.exe" -PostBuildEvent -AssemblyName="$(AssemblyName)"</PostBuildEvent>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
     <OutputPath>bin\x64\Release\</OutputPath>
@@ -34,9 +35,6 @@
     </Reference>
     <Reference Include="Divine.Zero">
       <HintPath>..\..\..\..\..\..\Program Files\Divine\References\Divine.Zero.dll</HintPath>
-    </Reference>
-    <Reference Include="DotNetZip">
-      <HintPath>..\..\..\..\..\..\Program Files\Divine\References\DotNetZip.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>

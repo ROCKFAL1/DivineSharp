@@ -4,6 +4,7 @@ using Divine.SDK.Extensions;
 using SharpDX;
 using System;
 using System.Linq;
+using Divine.Extensions;
 
 namespace Utilities.Modules
 {
@@ -25,6 +26,7 @@ namespace Utilities.Modules
             holdKey = CreepblockMenu.CreateHoldKey("Creep block key");
             sensitivity = CreepblockMenu.CreateSlider("Block sensitivity", 550, 500, 700);
             skipranged = CreepblockMenu.CreateSwitcher("Block ranged", false);
+
 
             updateHandler = UpdateManager.CreateIngameUpdate(50, false, OnUpdate);
             holdKey.ValueChanged += (sender, e) =>
@@ -58,7 +60,7 @@ namespace Utilities.Modules
                                       / creeps.Count;
 
             var tower = EntityManager.GetEntities<Tower>().FirstOrDefault(
-                x => x.IsValid && x.IsAlive && x.Distance2D(hero) < 500 && x.Name == "npc_dota_badguys_tower2_mid");
+                x => x.IsValid && x.IsAlive && x.Distance2D(hero) < 500 && (x.Name == "npc_dota_badguys_tower2_mid" || x.Name == "npc_dota_goodguys_tower2_mid"));
 
             if (tower?.Distance2D(hero) < 200)
             {
