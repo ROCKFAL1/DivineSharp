@@ -1,4 +1,4 @@
-﻿using Divine;
+﻿using Divine.Service;
 
 namespace RockHeroes
 {

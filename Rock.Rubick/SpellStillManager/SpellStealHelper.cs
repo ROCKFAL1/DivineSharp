@@ -1,4 +1,5 @@
-﻿using Divine;
+﻿using Divine.Entity.Entities.Abilities.Components;
+using Divine.Entity.Entities.Units.Heroes;
 using System.Collections.Generic;
 using System.Linq;
 

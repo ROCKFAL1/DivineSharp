@@ -24,33 +24,6 @@
     <ErrorReport>prompt</ErrorReport>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Divine, Version=1.0.0.0, Culture=neutral, processorArchitecture=AMD64">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\..\Program Files\Divine\References\Divine.dll</HintPath>
-    </Reference>
-    <Reference Include="Divine.Menu, Version=1.0.0.0, Culture=neutral, processorArchitecture=AMD64">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\..\Program Files\Divine\References\Divine.Menu.dll</HintPath>
-    </Reference>
-    <Reference Include="Divine.SDK, Version=1.0.0.0, Culture=neutral, processorArchitecture=AMD64">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\..\Program Files\Divine\References\Divine.SDK.dll</HintPath>
-    </Reference>
-    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\..\Program Files\Divine\References\Newtonsoft.Json.dll</HintPath>
-    </Reference>
-    <Reference Include="SharpDX, Version=4.2.0.0, Culture=neutral, PublicKeyToken=b4dcf0f35e5521f1, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\..\Program Files\Divine\References\SharpDX.dll</HintPath>
-    </Reference>
-    <Reference Include="SharpDX.Mathematics, Version=4.2.0.0, Culture=neutral, PublicKeyToken=b4dcf0f35e5521f1, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\..\Program Files\Divine\References\SharpDX.Mathematics.dll</HintPath>
-    </Reference>
-    <Reference Include="System" />
-  </ItemGroup>
-  <ItemGroup>
     <Compile Include="Bootstap.cs" />
     <Compile Include="General.cs" />
     <Compile Include="Menu.cs" />
@@ -64,6 +37,17 @@
     <Compile Include="SpellStillManager\SpellStealHelper.cs" />
     <Compile Include="SpellStillManager\Dictionaries.cs" />
     <Compile Include="SpellStillManager\SpellStealMain.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Divine">
+      <HintPath>..\..\..\..\Desktop\Divine.Client.NET5\References\Divine.dll</HintPath>
+    </Reference>
+    <Reference Include="Divine.Zero">
+      <HintPath>..\..\..\..\Desktop\Divine.Client.NET5\References\Divine.Zero.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\..\..\..\Desktop\Divine.Client.NET5\References\Newtonsoft.Json.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

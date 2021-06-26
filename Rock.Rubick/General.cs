@@ -1,5 +1,6 @@
-﻿using Divine;
-using Divine.SDK.Helpers;
+﻿using Divine.Entity;
+using Divine.Entity.Entities.Units.Heroes;
+using Divine.Helpers;
 
 namespace RockRubick
 {

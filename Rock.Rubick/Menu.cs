@@ -1,4 +1,6 @@
-﻿using Divine.Menu;
+﻿using Divine.Entity.Entities.Abilities.Components;
+using Divine.Entity.Entities.Units.Heroes.Components;
+using Divine.Menu;
 using Divine.Menu.EventArgs;
 using Divine.Menu.Items;
 
@@ -10,9 +12,9 @@ namespace RockRubick
 
         public static void MenuBootstrap()
         {
-            var rootmenu = MenuManager.CreateRootMenu("Rock.Rubick").SetHeroTexture(Divine.HeroId.npc_dota_hero_rubick);
+            var rootmenu = MenuManager.CreateRootMenu("Rock.Rubick").SetHeroImage(HeroId.npc_dota_hero_rubick);
 
-            RubickEnabled = rootmenu.CreateSwitcher("Spell Stealer").SetAbilityTexture(Divine.AbilityId.rubick_spell_steal);
+            RubickEnabled = rootmenu.CreateSwitcher("Spell Stealer").SetAbilityImage(AbilityId.rubick_spell_steal);
 
             RubickEnabled.ValueChanged += RubickEnabled_ValueChanged;
         }

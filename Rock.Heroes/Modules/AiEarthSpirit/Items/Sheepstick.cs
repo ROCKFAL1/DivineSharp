@@ -1,7 +1,9 @@
-﻿using Divine;
+﻿using Divine.Entity.Entities.Abilities.Components;
+using Divine.Entity.Entities.Units;
+using Divine.Entity.Entities.Units.Heroes;
+using Divine.Extensions;
+using Divine.Helpers;
 using Divine.Menu.Items;
-using Divine.SDK.Extensions;
-using Divine.SDK.Helpers;
 using System.Linq;
 
 namespace RockHeroes.Modules.EarthSpirit

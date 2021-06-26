@@ -1,5 +1,12 @@
-﻿using Divine;
-using Divine.SDK.Extensions;
+﻿using Divine.Entity;
+using Divine.Entity.Entities.Abilities.Components;
+using Divine.Entity.Entities.Abilities.Spells;
+using Divine.Entity.Entities.Units.Heroes;
+using Divine.Extensions;
+using Divine.Game;
+using Divine.Particle;
+using Divine.Particle.EventArgs;
+using Divine.Update;
 using System;
 using System.Linq;
 using System.Threading.Tasks;

@@ -1,7 +1,13 @@
 ﻿using Divine;
-using Divine.SDK.Extensions;
-using Divine.SDK.Prediction;
-using SharpDX;
+using Divine.Entity;
+using Divine.Entity.Entities.Units;
+using Divine.Entity.Entities.Units.Heroes;
+using Divine.Extensions;
+using Divine.Game;
+using Divine.Numerics;
+using Divine.Order;
+using Divine.Order.EventArgs;
+using Divine.Prediction;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -107,7 +113,7 @@ namespace DawnBreaker_SkillHelper
                 PredictionSkillshotType = PredictionSkillshotType.SkillshotCircle,
                 Radius = 200,
                 Delay = 0.5f,
-                CollisionTypes = Divine.SDK.Prediction.Collision.CollisionTypes.None
+                CollisionTypes = Divine.Prediction.Collision.CollisionTypes.None
             };
 
             input = input.WithTarget(mainTarget);

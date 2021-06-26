@@ -23,31 +23,6 @@
     <ErrorReport>prompt</ErrorReport>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Divine">
-      <HintPath>..\..\..\..\..\..\Program Files\Divine\References\Divine.dll</HintPath>
-    </Reference>
-    <Reference Include="Divine.Menu">
-      <HintPath>..\..\..\..\..\..\Program Files\Divine\References\Divine.Menu.dll</HintPath>
-    </Reference>
-    <Reference Include="Divine.SDK">
-      <HintPath>..\..\..\..\..\..\Program Files\Divine\References\Divine.SDK.dll</HintPath>
-    </Reference>
-    <Reference Include="Divine.Zero">
-      <HintPath>..\..\..\..\..\..\Program Files\Divine\References\Divine.Zero.dll</HintPath>
-    </Reference>
-    <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\..\Program Files\Divine\References\Newtonsoft.Json.dll</HintPath>
-    </Reference>
-    <Reference Include="SharpDX">
-      <HintPath>..\..\..\..\..\..\Program Files\Divine\References\SharpDX.dll</HintPath>
-    </Reference>
-    <Reference Include="SharpDX.Mathematics">
-      <HintPath>..\..\..\..\..\..\Program Files\Divine\References\SharpDX.Mathematics.dll</HintPath>
-    </Reference>
-    <Reference Include="WindowsBase" />
-  </ItemGroup>
-  <ItemGroup>
     <Compile Include="BootStrap.cs" />
     <Compile Include="Context.cs" />
     <Compile Include="Modules\AiEarthSpirit\EarthSpirit.cs" />
@@ -62,6 +37,18 @@
     <Compile Include="Modules\AiEarthSpirit\Items\Veil_of_discord.cs" />
     <Compile Include="Modules\SfRazes.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Divine">
+      <HintPath>..\..\..\..\Desktop\Divine.Client.NET5\References\Divine.dll</HintPath>
+    </Reference>
+    <Reference Include="Divine.Zero">
+      <HintPath>..\..\..\..\Desktop\Divine.Client.NET5\References\Divine.Zero.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\..\..\..\Desktop\Divine.Client.NET5\References\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="WindowsBase" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

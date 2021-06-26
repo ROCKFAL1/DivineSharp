@@ -1,6 +1,12 @@
-﻿using Divine;
-using Divine.SDK.Extensions;
-using Divine.SDK.Prediction;
+﻿using Divine.Entity;
+using Divine.Entity.Entities.Abilities.Components;
+using Divine.Entity.Entities.Units.Heroes;
+using Divine.Extensions;
+using Divine.Game;
+using Divine.Order;
+using Divine.Order.EventArgs;
+using Divine.Prediction;
+using Divine.Update;
 using System.Linq;
 
 namespace DawnBreaker_SkillHelper

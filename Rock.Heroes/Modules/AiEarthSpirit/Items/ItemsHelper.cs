@@ -1,4 +1,6 @@
-﻿using Divine;
+﻿using Divine.Entity.Entities.Abilities.Components;
+using Divine.Entity.Entities.Units;
+using Divine.Entity.Entities.Units.Heroes;
 using System;
 using System.Linq;
 
@@ -31,6 +33,7 @@ namespace RockHeroes.Modules.EarthSpirit
 
             return BoolItem;
         }
+
         public static void CastItem(Hero hero, AbilityId abilityId)
         {
             var Item = hero.Inventory.Items.FirstOrDefault(x => x.Id == abilityId);
