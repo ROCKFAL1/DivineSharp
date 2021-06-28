@@ -45,7 +45,7 @@ namespace TemplarAssasinDestruction.Abilities.Spells
             if (Context.TemplarAssasin.Trap.IsReadyToCombo())
             {
                 var nearestToHeroTrap = Extensions.NearestTrapToPos(LocalHero.Position);
-                if (nearestToHeroTrap == null || LocalHero.Distance2D(nearestToHeroTrap) > LocalHero.Distance2D(predictedPos))
+                if (nearestToHeroTrap == null || target.Distance2D(nearestToHeroTrap) > 400)
                 {
                     BasePsionicTrap.Cast(predictedPos);
                     return true;
