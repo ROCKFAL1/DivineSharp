@@ -115,11 +115,7 @@ namespace TemplarAssasinDestruction.Modes
                 return;
             }
 
-            if (TA.Hex != null && TA.Hex.Execute())
-            {
-                ComboSleeper.Sleep(300);
-                return;
-            }
+           
 
             if (TA.Refraction.Execute())
             {
@@ -134,7 +130,11 @@ namespace TemplarAssasinDestruction.Modes
                 return;
             }
 
-            
+            if (TA.Hex != null && TA.Hex.Execute())
+            {
+                ComboSleeper.Sleep(300);
+                return;
+            }
 
             if (TA.BlackKingBar != null && TA.BlackKingBar.Execute())
             {
