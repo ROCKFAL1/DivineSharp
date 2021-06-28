@@ -15,6 +15,12 @@ namespace TemplarAssasinDestruction
             {
                 attackRange += 140;
             }
+
+            if (localHero.Spellbook.Talents.Any( x => x.Id == AbilityId.special_bonus_unique_templar_assassin_8 && x.Level == 1))
+            {
+                attackRange += 100;
+            }
+
             var psiBlades = localHero.Spellbook.GetSpellById(AbilityId.templar_assassin_psi_blades);
             attackRange += psiBlades.Level == 0 ? 0 : 80 + (psiBlades.Level - 1) * 50;
             return attackRange;

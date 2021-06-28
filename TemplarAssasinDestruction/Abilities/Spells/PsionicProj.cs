@@ -27,7 +27,7 @@ namespace TemplarAssasinDestruction.Abilities.Spells
 
             var target = TargetManager.CurrentTarget;
 
-            var predictedPos = target.IsMoving ? target.InFront(target.MovementSpeed) : target.Position;
+            var predictedPos = target.IsMoving ? target.InFront(target.MovementSpeed * 1.75f) : target.Position;
 
             var InPredictionTrap = Extensions.NearestTrapToPos(predictedPos)?.Distance2D(predictedPos) < 400;
 

@@ -80,7 +80,7 @@
     <Compile Include="Abilities\Spells\Trap.cs" />
     <Compile Include="Bootstrap.cs" />
     <Compile Include="Context.cs" />
-    <Compile Include="Extension.cs" />
+    <Compile Include="Extensions.cs" />
     <Compile Include="Modes\Combo.cs" />
     <Compile Include="Modes\Harass.cs" />
     <Compile Include="PluginMenu.cs" />
