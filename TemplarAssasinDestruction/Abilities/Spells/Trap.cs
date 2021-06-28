@@ -33,12 +33,12 @@ namespace TemplarAssasinDestruction.Abilities.Spells
                 return false;
             }
 
-            if (TrapOnLocalHero.Distance2D(target) > 400)
+            if (TrapOnLocalHero.Distance2D(target) > 450)
             {
                 return false;
             }
 
-            if (target.InFront(100).Distance2D(TrapOnLocalHero.Position) < 400)
+            if (target.InFront(100).Distance2D(TrapOnLocalHero.Position) < 450)
             {
                 return false;
             }

@@ -36,7 +36,7 @@ namespace TemplarAssasinDestruction.Abilities.Spells
                 if (SpellHelper.CanBeCasted(Context.TemplarAssasin.PsionicTrap.BasePsionicTrap))
                 {
                     Context.TemplarAssasin.PsionicTrap.BasePsionicTrap.Cast(predictedPos);
-                    return true;
+                    return false;
                 }
             }
 
