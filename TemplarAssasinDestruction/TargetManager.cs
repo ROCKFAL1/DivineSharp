@@ -32,12 +32,13 @@ namespace TemplarAssasinDestruction
 
         private Hero GetNearestToMouse()
         {
+            var mousePos = GameManager.MousePosition;
             Hero target = EntityManager.GetEntities<Hero>()
-                .Where(x => x.Distance2D(GameManager.MousePosition) < 600
+                .Where(x => x.Distance2D(mousePos) < 600
                         && x.IsAlive
                         && x.IsEnemy(Context.TemplarAssasin.LocalHero)
                         && x.IsVisible)
-                .OrderBy(x => x.Distance2D(Context.TemplarAssasin.LocalHero))
+                .OrderBy(x => x.Distance2D(mousePos))
                 .FirstOrDefault();
             return target;
         }

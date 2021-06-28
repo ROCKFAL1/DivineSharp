@@ -28,10 +28,16 @@ namespace TemplarAssasinDestruction.Abilities.Items
 
             var attackRange = Extensions.GetAttackRange();
 
-            float distance = attackRange / 2;
+            float distance = attackRange / 3;
 
             if (LocalHero.Distance2D(target) < attackRange + distance)
             {
+                if (BaseBlink.Id == AbilityId.item_swift_blink)
+                {
+                    BaseBlink.Cast(target.InFront(150));
+                    return true;
+                }
+
                 return false;
             }
 
@@ -41,6 +47,9 @@ namespace TemplarAssasinDestruction.Abilities.Items
             {
                 return false;
             }
+
+            
+
             BaseBlink.Cast(blinkPoint);
             return true;
         }

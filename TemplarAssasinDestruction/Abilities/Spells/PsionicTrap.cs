@@ -28,15 +28,18 @@ namespace TemplarAssasinDestruction.Abilities.Spells
 
             var target = TargetManager.CurrentTarget;
 
+            if (target.Distance2D(Extensions.NearestTrapToPos(target.Position).Position) < 400)
+            {
+                return false;
+            }
+
             var predictedPos = target.IsMoving ? target.InFront(target.MovementSpeed * 1.5f) : target.Position;
 
             var InPredictionTrap = Extensions.NearestTrapToPos(predictedPos);
 
             if (Context.TemplarAssasin.PsionicProj.IsReadyToCombo())
             {
-                
-
-                if (InPredictionTrap == null || predictedPos.Distance2D(InPredictionTrap.Position) > 500)
+                if (InPredictionTrap == null || predictedPos.Distance2D(InPredictionTrap.Position) > 400)
                 {
                     BasePsionicTrap.Cast(predictedPos);
                     return true;

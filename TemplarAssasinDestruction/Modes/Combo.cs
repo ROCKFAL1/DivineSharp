@@ -3,6 +3,7 @@ using Divine.SDK.Extensions;
 using Divine.SDK.Helpers;
 using Divine.SDK.Orbwalker;
 using System;
+using System.Linq;
 
 namespace TemplarAssasinDestruction.Modes
 {
@@ -57,18 +58,33 @@ namespace TemplarAssasinDestruction.Modes
                 return;
             }
 
+            var enemyNearTarget = EntityManager.GetEntities<Hero>().Where(x => x != target
+                    && x.IsEnemy(LocalHero)
+                    && x.IsAlive
+                    && x.IsVisible
+                    && x.Distance2D(target) < Extensions.GetAttackRange() * 2)
+                        .OrderBy(x => x.Distance2D(target))
+                        .FirstOrDefault();
+
             if (!OrbWalkerSleeper.Sleeping)
             {
+                if (enemyNearTarget != null)
+                {
+                    OrbwalkerManager.OrbwalkTo(target, target.Position.Extend(enemyNearTarget.Position, -Extensions.GetAttackRange() / 2));
+                    OrbWalkerSleeper.Sleep(150);
+                    return;
+                }
+
                 if (!target.IsMoving)
                 {
                     LocalHero.Attack(target);
-                    OrbWalkerSleeper.Sleep(250);
+                    OrbWalkerSleeper.Sleep(200);
                     return;
                 }
                 else
                 {
                     OrbwalkerManager.OrbwalkTo(target, GameManager.MousePosition);
-                    OrbWalkerSleeper.Sleep(250);
+                    OrbWalkerSleeper.Sleep(200);
                     return;
                 }
             }
@@ -80,7 +96,7 @@ namespace TemplarAssasinDestruction.Modes
 
             if (TA.PsionicTrap.Execute())
             {
-                ComboSleeper.Sleep(150);
+                ComboSleeper.Sleep(200);
                 return;
             }
 
@@ -88,31 +104,32 @@ namespace TemplarAssasinDestruction.Modes
             {
 
                 ComboSleeper.Sleep(1500);
+                OrbWalkerSleeper.Sleep(1500);
                 return;
             }
 
             if (TA.Trap.Execute())
             {
-                ComboSleeper.Sleep(150);
+                ComboSleeper.Sleep(200);
                 return;
             }
 
             if (TA.Hex != null && TA.Hex.Execute())
             {
-                ComboSleeper.Sleep(250);
+                ComboSleeper.Sleep(300);
                 return;
             }
 
             if (TA.Refraction.Execute())
             {
-                ComboSleeper.Sleep(150);
+                ComboSleeper.Sleep(200);
                 return;
             }
 
 
             if (TA.Blink != null && TA.Blink.Execute())
             {
-                ComboSleeper.Sleep(150);
+                ComboSleeper.Sleep(200);
                 return;
             }
 
@@ -120,19 +137,19 @@ namespace TemplarAssasinDestruction.Modes
 
             if (TA.BlackKingBar != null && TA.BlackKingBar.Execute())
             {
-                ComboSleeper.Sleep(150);
+                ComboSleeper.Sleep(200);
                 return;
             }
 
             if (TA.Nullifier != null && TA.Nullifier.Execute())
             {
-                ComboSleeper.Sleep(150);
+                ComboSleeper.Sleep(200);
                 return;
             }
 
             if (TA.Orchid != null && TA.Orchid.Execute())
             {
-                ComboSleeper.Sleep(150);
+                ComboSleeper.Sleep(200);
                 return;
             }
 
@@ -140,13 +157,13 @@ namespace TemplarAssasinDestruction.Modes
             {
                 LocalHero.Attack(target);
                 OrbWalkerSleeper.Sleep(750);
-                ComboSleeper.Sleep(300);
+                ComboSleeper.Sleep(750);
                 return;
             }
 
             if (TA.Manta != null && TA.Manta.Execute())
             {
-                ComboSleeper.Sleep(150);
+                ComboSleeper.Sleep(200);
                 return;
             }
 

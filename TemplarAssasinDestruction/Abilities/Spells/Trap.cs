@@ -26,21 +26,30 @@ namespace TemplarAssasinDestruction.Abilities.Spells
 
             var target = TargetManager.CurrentTarget;
 
-            var predictedPos = target.IsMoving ? target.InFront(target.MovementSpeed) : target.Position;
-
-            var TrapInPredict = Extensions.NearestTrapToPos(predictedPos);
-
-            if (TrapInPredict == null)
+            if ((target.UnitState & UnitState.Hexed) == UnitState.Hexed 
+                || (target.UnitState & UnitState.Stunned) == UnitState.Stunned)
             {
                 return false;
             }
 
-            if (TrapInPredict.Distance2D(predictedPos) > 500)
+            var TrapOnPredict = Extensions.NearestTrapToPos(LocalHero.Position);
+
+            if (TrapOnPredict == null)
             {
                 return false;
             }
 
-            if (TrapInPredict != Extensions.NearestTrapToPos(LocalHero.Position))
+            if (TrapOnPredict.Distance2D(target) > 400)
+            {
+                return false;
+            }
+
+            if (TrapOnPredict != Extensions.NearestTrapToPos(LocalHero.Position))
+            {
+                return false;
+            }
+
+            if (target.InFront(100).Distance2D(TrapOnPredict.Position) < 400)
             {
                 return false;
             }
