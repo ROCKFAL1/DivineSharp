@@ -94,20 +94,21 @@ namespace TemplarAssasinDestruction.Modes
                 return;
             }
 
+            if (TA.PsionicProj.Execute())
+            {
+
+                ComboSleeper.Sleep(300);
+                OrbWalkerSleeper.Sleep(300);
+                return;
+            }
+
             if (TA.PsionicTrap.Execute())
             {
                 ComboSleeper.Sleep(200);
                 return;
             }
 
-            if (TA.PsionicProj.Execute())
-            {
-
-                ComboSleeper.Sleep(150);
-                OrbWalkerSleeper.Sleep(150);
-                return;
-            }
-
+       
             if (TA.Trap.Execute())
             {
                 ComboSleeper.Sleep(150);

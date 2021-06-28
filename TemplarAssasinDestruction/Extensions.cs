@@ -1,6 +1,8 @@
 ﻿using Divine;
 using Divine.SDK.Extensions;
 using SharpDX;
+using System.Collections;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace TemplarAssasinDestruction
@@ -28,10 +30,16 @@ namespace TemplarAssasinDestruction
 
         public static Entity NearestTrapToPos(Vector3 position)
         {
-            return EntityManager.GetEntities<Entity>()
+            return GetAllTrapsInRange(position, 9999).FirstOrDefault();
+        }
+
+        public static IEnumerable<Entity> GetAllTrapsInRange(Vector3 position, float range)
+        {
+            var traps = EntityManager.GetEntities<Entity>()
                 .Where(x => x.Name == "npc_dota_templar_assassin_psionic_trap" && x.IsAlive)
-                .OrderBy(x => x.Distance2D(position))
-                .FirstOrDefault();
+                .OrderBy(x => x.Distance2D(position));
+
+            return traps;
         }
     }
 }

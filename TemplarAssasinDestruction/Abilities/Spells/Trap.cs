@@ -1,5 +1,6 @@
 ﻿using Divine;
 using Divine.SDK.Extensions;
+using System.Linq;
 
 namespace TemplarAssasinDestruction.Abilities.Spells
 {
@@ -26,19 +27,14 @@ namespace TemplarAssasinDestruction.Abilities.Spells
 
             var target = TargetManager.CurrentTarget;
 
-            var TrapOnLocalHero = Extensions.NearestTrapToPos(LocalHero.Position);
+            var TrapsOnLocalHero = Extensions.GetAllTrapsInRange(LocalHero.Position, 450);
 
-            if (TrapOnLocalHero == null)
+            if (TrapsOnLocalHero == null || TrapsOnLocalHero.Count() == 0)
             {
                 return false;
             }
 
-            if (TrapOnLocalHero.Distance2D(target) > 450)
-            {
-                return false;
-            }
-
-            if (target.InFront(100).Distance2D(TrapOnLocalHero.Position) < 450)
+            if (TrapsOnLocalHero.All(x => x.Distance2D(target) > 450 || target.InFront(100).Distance2D(x.Position) < 450))
             {
                 return false;
             }
