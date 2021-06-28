@@ -46,7 +46,7 @@ namespace TemplarAssasinDestruction.Modes
 
         private void UpdateManager_IngameUpdate()
         {
-            if (!LocalHero.IsAlive )
+            if (!LocalHero.IsAlive  || TA.PsionicProj.BasePsionicProj.IsChanneling)
             {
                 return;
             }
@@ -103,14 +103,14 @@ namespace TemplarAssasinDestruction.Modes
             if (TA.PsionicProj.Execute())
             {
 
-                ComboSleeper.Sleep(1500);
-                OrbWalkerSleeper.Sleep(1500);
+                ComboSleeper.Sleep(150);
+                OrbWalkerSleeper.Sleep(150);
                 return;
             }
 
             if (TA.Trap.Execute())
             {
-                ComboSleeper.Sleep(200);
+                ComboSleeper.Sleep(150);
                 return;
             }
 
@@ -122,14 +122,14 @@ namespace TemplarAssasinDestruction.Modes
 
             if (TA.Refraction.Execute())
             {
-                ComboSleeper.Sleep(200);
+                ComboSleeper.Sleep(150);
                 return;
             }
 
 
             if (TA.Blink != null && TA.Blink.Execute())
             {
-                ComboSleeper.Sleep(200);
+                ComboSleeper.Sleep(150);
                 return;
             }
 
@@ -137,19 +137,19 @@ namespace TemplarAssasinDestruction.Modes
 
             if (TA.BlackKingBar != null && TA.BlackKingBar.Execute())
             {
-                ComboSleeper.Sleep(200);
+                ComboSleeper.Sleep(150);
                 return;
             }
 
             if (TA.Nullifier != null && TA.Nullifier.Execute())
             {
-                ComboSleeper.Sleep(200);
+                ComboSleeper.Sleep(150);
                 return;
             }
 
             if (TA.Orchid != null && TA.Orchid.Execute())
             {
-                ComboSleeper.Sleep(200);
+                ComboSleeper.Sleep(150);
                 return;
             }
 
@@ -163,7 +163,7 @@ namespace TemplarAssasinDestruction.Modes
 
             if (TA.Manta != null && TA.Manta.Execute())
             {
-                ComboSleeper.Sleep(200);
+                ComboSleeper.Sleep(150);
                 return;
             }
 
