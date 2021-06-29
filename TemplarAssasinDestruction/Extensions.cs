@@ -33,10 +33,12 @@ namespace TemplarAssasinDestruction
             return GetAllTrapsInRange(position, 9999).FirstOrDefault();
         }
 
-        public static IEnumerable<Entity> GetAllTrapsInRange(Vector3 position, float range)
+        public static IEnumerable<Unit> GetAllTrapsInRange(Vector3 position, float range)
         {
-            var traps = EntityManager.GetEntities<Entity>()
-                .Where(x => x.Name == "npc_dota_templar_assassin_psionic_trap" && x.IsAlive)
+            var traps = EntityManager.GetEntities<Unit>()
+                .Where(x => x.Distance2D(position) < range
+                && x.Name == "npc_dota_templar_assassin_psionic_trap"
+                && x.IsAlive)
                 .OrderBy(x => x.Distance2D(position));
 
             return traps;

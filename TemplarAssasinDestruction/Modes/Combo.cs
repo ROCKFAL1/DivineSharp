@@ -17,6 +17,8 @@ namespace TemplarAssasinDestruction.Modes
         private Sleeper OrbWalkerSleeper = new Sleeper();
         private Sleeper ComboSleeper = new Sleeper();
 
+        private Sleeper ProjSleeper = new Sleeper();
+
 
         public Combo(Context context)
         {
@@ -46,7 +48,7 @@ namespace TemplarAssasinDestruction.Modes
 
         private void UpdateManager_IngameUpdate()
         {
-            if (!LocalHero.IsAlive  || TA.PsionicProj.BasePsionicProj.IsChanneling)
+            if (!LocalHero.IsAlive  || TA.PsionicProj.BasePsionicProj.IsChanneling || ProjSleeper.Sleeping)
             {
                 return;
             }
@@ -71,7 +73,7 @@ namespace TemplarAssasinDestruction.Modes
                 if (enemyNearTarget != null)
                 {
                     OrbwalkerManager.OrbwalkTo(target, target.Position.Extend(enemyNearTarget.Position, -Extensions.GetAttackRange() / 2));
-                    OrbWalkerSleeper.Sleep(150);
+                    OrbWalkerSleeper.Sleep(100);
                     return;
                 }
 
@@ -96,7 +98,7 @@ namespace TemplarAssasinDestruction.Modes
 
             if (TA.PsionicProj.Execute())
             {
-
+                ProjSleeper.Sleep(500);
                 ComboSleeper.Sleep(300);
                 OrbWalkerSleeper.Sleep(300);
                 return;

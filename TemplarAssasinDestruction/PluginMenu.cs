@@ -35,7 +35,8 @@ namespace TemplarAssasinDestruction
         public PluginMenu()
         {
             RootMenu = MenuManager.CreateRootMenu("TADestruction")
-                .SetHeroTexture(HeroId.npc_dota_hero_templar_assassin);
+                .SetHeroTexture(HeroId.npc_dota_hero_templar_assassin)
+                .SetTooltip("V1.2 BETA");
 
             PluginStatus = RootMenu.CreateSwitcher("On/Off");
             ComboKey = RootMenu.CreateHoldKey("Combo Key", Key.None);

@@ -68,19 +68,20 @@ namespace TemplarAssasinDestruction.Modes
                 .OfType<Creep>()
                 .Where(x => x.IsValid
                         && x.Distance2D(LocalHero) < 500
-                        && x.Type != EntityType.Courier
                         && x.IsAlive
                         && IsDamagableCreep(x));
 
             var nearestEnemy = entities
                 .OfType<Hero>()
-                .Where(x => x.IsVisible && x.IsEnemy(LocalHero) && x.IsAlive)
+                .Where(x => x.Distance2D(LocalHero) < Extensions.GetAttackRange() * 3 
+                                    && x.IsVisible && x.IsEnemy(LocalHero)
+                                    && x.IsAlive)
                 .OrderBy(x => x.Distance2D(LocalHero))
                 .FirstOrDefault();
 
             var mousePos = GameManager.MousePosition;
 
-            if (nearestDamagableCreeps.Count() == 0 || nearestDamagableCreeps == null || nearestEnemy == null)
+            if (nearestDamagableCreeps == null || nearestDamagableCreeps.Count() == 0 || nearestEnemy == null)
             {
                 HarassSleeper.Sleep(50);
                 LocalHero.Move(mousePos);
@@ -103,7 +104,7 @@ namespace TemplarAssasinDestruction.Modes
                                                                                         : mousePos))
                 .FirstOrDefault();
 
-            if (nearestHarassPoint.Key == null)
+            if (nearestHarassPoint.Key == null || nearestHarassPoint.Value == null)
             {
                 HarassSleeper.Sleep(50);
                 LocalHero.Move(mousePos);

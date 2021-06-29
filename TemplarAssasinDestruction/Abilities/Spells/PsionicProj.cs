@@ -29,7 +29,7 @@ namespace TemplarAssasinDestruction.Abilities.Spells
 
             var predictedPos = target.IsMoving ? target.InFront(target.MovementSpeed * 1.75f) : target.Position;
 
-            var InPredictionTrap = Extensions.NearestTrapToPos(predictedPos)?.Distance2D(predictedPos) < 450;
+            var InPredictionTrap = Extensions.NearestTrapToPos(predictedPos)?.Distance2D(predictedPos) < 400;
 
             if (!InPredictionTrap)
             {
@@ -66,7 +66,7 @@ namespace TemplarAssasinDestruction.Abilities.Spells
                 return false;
             }
 
-            if (LocalHero.Distance2D(TargetManager.CurrentTarget) < 1000)
+            if (LocalHero.Distance2D(TargetManager.CurrentTarget) < 1100)
             {
                 return false;
             }
