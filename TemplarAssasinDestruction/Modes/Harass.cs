@@ -66,15 +66,18 @@ namespace TemplarAssasinDestruction.Modes
 
             var nearestDamagableCreeps = entities
                 .OfType<Creep>()
-                .Where(x => x.IsValid
-                        && x.Distance2D(LocalHero) < 500
+                .Where(x => x.Distance2D(LocalHero) < 500
+                        && x.IsSpawned
+                        && x.IsValid
+                        && x.IsVisible
                         && x.IsAlive
                         && IsDamagableCreep(x));
 
             var nearestEnemy = entities
                 .OfType<Hero>()
                 .Where(x => x.Distance2D(LocalHero) < Extensions.GetAttackRange() * 3 
-                                    && x.IsVisible && x.IsEnemy(LocalHero)
+                                    && x.IsVisible
+                                    && x.IsEnemy(LocalHero)
                                     && x.IsAlive)
                 .OrderBy(x => x.Distance2D(LocalHero))
                 .FirstOrDefault();
@@ -94,8 +97,10 @@ namespace TemplarAssasinDestruction.Modes
 
             foreach (var creep in nearestDamagableCreeps)
             {
-                harassPoints.Add(creep.Position.Extend(nearestEnemy.Position, -(Extensions.GetAttackRange() / 2)), creep);
+                harassPoints.Add(creep.Position.Extend(nearestEnemy.Position, -(Extensions.GetAttackRange() / 2)), creep);             
             }
+
+            
 
             var nearestHarassPoint = harassPoints
                 .Where(x => x.Key.Distance2D(nearestEnemy.Position) < Extensions.GetAttackRange() * 2)

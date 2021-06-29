@@ -36,6 +36,7 @@ namespace TemplarAssasinDestruction
             Hero target = EntityManager.GetEntities<Hero>()
                 .Where(x => x.Distance2D(mousePos) < 600
                         && x.IsAlive
+                        && !x.IsIllusion
                         && x.IsEnemy(Context.TemplarAssasin.LocalHero)
                         && x.IsVisible)
                 .OrderBy(x => x.Distance2D(mousePos))
