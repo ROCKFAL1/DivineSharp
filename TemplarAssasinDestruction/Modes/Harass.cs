@@ -62,7 +62,7 @@ namespace TemplarAssasinDestruction.Modes
             {
                 return;
             }
-            var entities = EntityManager.GetEntities<Entity>();
+            var entities = EntityManager.GetEntities<Unit>();
 
             var nearestDamagableCreeps = entities
                 .OfType<Creep>()
@@ -97,13 +97,13 @@ namespace TemplarAssasinDestruction.Modes
 
             foreach (var creep in nearestDamagableCreeps)
             {
-                harassPoints.Add(creep.Position.Extend(nearestEnemy.Position, -(Extensions.GetAttackRange() / 2)), creep);             
+                harassPoints.Add(creep.Position.Extend(nearestEnemy.Position, -(attackRange / 2)), creep);             
             }
 
             
 
             var nearestHarassPoint = harassPoints
-                .Where(x => x.Key.Distance2D(nearestEnemy.Position) < Extensions.GetAttackRange() * 2)
+                .Where(x => x.Key.Distance2D(nearestEnemy.Position) < attackRange * 2)
                 .OrderBy(x => x.Key.Distance2D(Context.PluginMenu.HarassMode.Value == "Closest Harass Position"
                                                                                         ? LocalHero.Position
                                                                                         : mousePos))
@@ -115,6 +115,17 @@ namespace TemplarAssasinDestruction.Modes
                 LocalHero.Move(mousePos);
                 return;
             }
+
+            for (var i = 0; i < Math.Ceiling(attackRange / 50); i++)
+            {
+                if (LocalHero.Distance2D(nearestHarassPoint.Value.Position.Extend(nearestHarassPoint.Key, i * 50)) < 50)
+                {
+                    LocalHero.Attack(nearestHarassPoint.Value);
+                    HarassSleeper.Sleep(100);
+                    return;
+                }
+            }
+
 
             if (LocalHero.Distance2D(nearestHarassPoint.Key) > 50)
             {
