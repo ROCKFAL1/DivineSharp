@@ -97,7 +97,7 @@ namespace TemplarAssasinDestruction.Modes
 
             foreach (var creep in nearestDamagableCreeps)
             {
-                harassPoints.Add(creep.Position.Extend(nearestEnemy.Position, -(attackRange / 2)), creep);             
+                harassPoints.Add(creep.Position.Extend(nearestEnemy.Position, -(attackRange * 0.8f)), creep);             
             }
 
             
@@ -116,9 +116,11 @@ namespace TemplarAssasinDestruction.Modes
                 return;
             }
 
+            var rangeCalc = LocalHero.Distance2D(nearestHarassPoint.Value) / 10 + 10;
+
             for (var i = 0; i < Math.Ceiling(attackRange / 50); i++)
             {
-                if (LocalHero.Distance2D(nearestHarassPoint.Value.Position.Extend(nearestHarassPoint.Key, i * 50)) < 50)
+                if (LocalHero.Distance2D(nearestHarassPoint.Value.Position.Extend(nearestHarassPoint.Key, i * 50)) < rangeCalc)
                 {
                     LocalHero.Attack(nearestHarassPoint.Value);
                     HarassSleeper.Sleep(100);
@@ -127,7 +129,7 @@ namespace TemplarAssasinDestruction.Modes
             }
 
 
-            if (LocalHero.Distance2D(nearestHarassPoint.Key) > 50)
+            if (LocalHero.Distance2D(nearestHarassPoint.Key) > rangeCalc)
             {
                 LocalHero.Move(nearestHarassPoint.Key);
                 HarassSleeper.Sleep(100);
