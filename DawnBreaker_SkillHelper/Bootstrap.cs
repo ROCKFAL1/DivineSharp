@@ -1,4 +1,7 @@
 ﻿using Divine;
+using Divine.Entity;
+using Divine.Entity.Entities.Units.Heroes.Components;
+using Divine.Service;
 
 namespace DawnBreaker_SkillHelper
 {

@@ -1,4 +1,4 @@
-﻿using Divine;
+﻿using Divine.Update;
 using System;
 
 namespace RockRubick

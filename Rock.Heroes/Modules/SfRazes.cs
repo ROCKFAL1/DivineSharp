@@ -1,7 +1,20 @@
 ﻿using Divine;
+using Divine.Entity;
+using Divine.Entity.Entities.Abilities;
+using Divine.Entity.Entities.Abilities.Components;
+using Divine.Entity.Entities.Units;
+using Divine.Entity.Entities.Units.Heroes.Components;
+using Divine.Extensions;
+using Divine.Game;
 using Divine.Menu.Items;
-using Divine.SDK.Extensions;
-using SharpDX;
+using Divine.Numerics;
+using Divine.Order;
+using Divine.Order.EventArgs;
+using Divine.Order.Orders.Components;
+using Divine.Particle;
+using Divine.Particle.Components;
+using Divine.Renderer;
+using System;
 
 namespace RockHeroes.Modules
 {
@@ -14,7 +27,7 @@ namespace RockHeroes.Modules
 
         public SfRazes(Context context)
         {
-            var SfRazesMenu = context.rootMenu.CreateMenu("SF helper").SetHeroTexture(HeroId.npc_dota_hero_nevermore);
+            var SfRazesMenu = context.rootMenu.CreateMenu("SF helper").SetHeroImage(HeroId.npc_dota_hero_nevermore);
             Razes2Mouse = SfRazesMenu.CreateSwitcher("Shadowrazes to mouse direction");
             DrawRazes = SfRazesMenu.CreateSwitcher("Draw Shadowrazes");
             ColorSwitcher = SfRazesMenu.CreateSlider("Colors", 0, 0, 6);
@@ -43,6 +56,12 @@ namespace RockHeroes.Modules
 
         }
 
+
+        private static Vector2 FromPolarCoordinates(float radial, float polar)
+        {
+            return new Vector2((float)Math.Cos(polar) * radial, (float)Math.Sin(polar) * radial);
+        }
+
         internal void Dispose()
         {
             //TODO
@@ -51,7 +70,7 @@ namespace RockHeroes.Modules
         public static Vector3 InFront(Unit unit, float distance)
         {
             var alpha = unit.RotationRad;
-            var vector2FromPolarAngle = SharpDXExtensions.FromPolarCoordinates(1f, alpha);
+            var vector2FromPolarAngle = FromPolarCoordinates(1f, alpha);
 
             var v = unit.Position + (vector2FromPolarAngle.ToVector3() * distance);
             return new Vector3(v.X, v.Y, 0);

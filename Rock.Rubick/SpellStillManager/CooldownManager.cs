@@ -1,4 +1,5 @@
-﻿using Divine;
+﻿using Divine.Game;
+using Divine.Update;
 using System;
 
 namespace RockRubick

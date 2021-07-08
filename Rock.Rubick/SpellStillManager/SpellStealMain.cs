@@ -1,5 +1,5 @@
-﻿using Divine;
-using Divine.SDK.Extensions;
+﻿using Divine.Extensions;
+using Divine.Update;
 
 namespace RockRubick
 {

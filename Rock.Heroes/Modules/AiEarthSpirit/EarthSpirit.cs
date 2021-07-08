@@ -1,14 +1,30 @@
 ﻿using Divine;
+using Divine.Entity;
+using Divine.Entity.Entities;
+using Divine.Entity.Entities.Abilities;
+using Divine.Entity.Entities.Abilities.Components;
+using Divine.Entity.Entities.Units.Buildings;
+using Divine.Entity.Entities.Units.Components;
+using Divine.Entity.Entities.Units.Heroes;
+using Divine.Entity.Entities.Units.Heroes.Components;
+using Divine.Extensions;
+using Divine.Game;
+using Divine.Helpers;
+using Divine.Input;
+using Divine.Input.EventArgs;
 using Divine.Menu.EventArgs;
 using Divine.Menu.Items;
-using Divine.SDK.Extensions;
-using Divine.SDK.Helpers;
-using Divine.SDK.Orbwalker;
-using SharpDX;
+using Divine.Numerics;
+using Divine.Order;
+using Divine.Order.EventArgs;
+using Divine.Update;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Input;
+using Divine.Modifier.Modifiers;
+using Divine.Entity.Entities.Units;
+using Divine.Orbwalker;
 
 namespace RockHeroes.Modules.EarthSpirit
 {
@@ -53,7 +69,7 @@ namespace RockHeroes.Modules.EarthSpirit
 
         public EarthSpirit(Context context)
         {
-            AiEarthSpiritMenu = context.rootMenu.CreateMenu("AI Earth Spirit").SetHeroTexture(Divine.HeroId.npc_dota_hero_earth_spirit);
+            AiEarthSpiritMenu = context.rootMenu.CreateMenu("AI Earth Spirit").SetHeroImage(HeroId.npc_dota_hero_earth_spirit);
             isEnable = AiEarthSpiritMenu.CreateSwitcher("On/Off");
 
             holdKey = AiEarthSpiritMenu.CreateHoldKey("Dynamic сombo key", Key.None);
@@ -232,6 +248,11 @@ namespace RockHeroes.Modules.EarthSpirit
             return false;
         }
 
+        private static Vector2 FromPolarCoordinates(float radial, float polar)
+        {
+            return new Vector2((float)Math.Cos(polar) * radial, (float)Math.Sin(polar) * radial);
+        }
+
         private static bool IsCastOrChan(Hero hero)
         {
             if (hero.IsChanneling() || hero.Spellbook.MainSpells.Where(x => x.IsInAbilityPhase).Any())
@@ -245,7 +266,7 @@ namespace RockHeroes.Modules.EarthSpirit
             Vector3 pos = Hero.Position;
             if (CantMove(Hero) || !Hero.IsMoving || delay == 0) return pos;
             float speed = GetMS(Hero);
-            return pos + (Vector3)SharpDXExtensions.FromPolarCoordinates(1f, Hero.RotationRad) * speed * delay;
+            return pos + (Vector3)FromPolarCoordinates(1f, Hero.RotationRad) * speed * delay;
         }
 
         private static bool IsPositionInRange(Hero hero, Vector3 pos, float radius)
@@ -258,7 +279,7 @@ namespace RockHeroes.Modules.EarthSpirit
         private static Vector3 InFront(Unit unit, float distance)
         {
             var alpha = unit.RotationRad;
-            var vector2FromPolarAngle = SharpDXExtensions.FromPolarCoordinates(1f, alpha);
+            var vector2FromPolarAngle = FromPolarCoordinates(1f, alpha);
 
             var v = unit.Position + (vector2FromPolarAngle.ToVector3() * distance);
             return new Vector3(v.X, v.Y, 0);
@@ -302,7 +323,7 @@ namespace RockHeroes.Modules.EarthSpirit
             Ability stone = myHero.Spellbook.GetSpellById(AbilityId.earth_spirit_stone_caller);
             if (stone != null && stone.IsValid && !SleeperOrder.Sleeping)
             {
-                stone.Cast(InFront(myHero, 100));
+                stone.Cast(myHero.InFront(100));
                 SleeperOrder.Sleep(70);
             }
         }
