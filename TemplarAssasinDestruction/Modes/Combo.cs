@@ -1,9 +1,13 @@
-﻿using Divine;
-using Divine.SDK.Extensions;
-using Divine.SDK.Helpers;
-using Divine.SDK.Orbwalker;
-using System;
+﻿using System;
 using System.Linq;
+
+using Divine.Entity;
+using Divine.Entity.Entities.Units.Heroes;
+using Divine.Extensions;
+using Divine.Game;
+using Divine.Helpers;
+using Divine.Orbwalker;
+using Divine.Update;
 
 namespace TemplarAssasinDestruction.Modes
 {

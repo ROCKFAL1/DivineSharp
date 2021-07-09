@@ -1,10 +1,16 @@
-﻿using Divine;
-using Divine.SDK.Extensions;
-using Divine.SDK.Helpers;
-using SharpDX;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+
+using Divine.Entity;
+using Divine.Entity.Entities.Units;
+using Divine.Entity.Entities.Units.Creeps;
+using Divine.Entity.Entities.Units.Heroes;
+using Divine.Extensions;
+using Divine.Game;
+using Divine.Helpers;
+using Divine.Numerics;
+using Divine.Update;
 
 namespace TemplarAssasinDestruction.Modes
 {

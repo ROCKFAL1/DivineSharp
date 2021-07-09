@@ -1,5 +1,8 @@
-﻿using Divine;
-using Divine.SDK.Extensions;
+﻿using Divine.Entity;
+using Divine.Extensions;
+using Divine.Game;
+using Divine.Update;
+using Divine.Entity.Entities.Units.Heroes;
 using System;
 using System.Linq;
 

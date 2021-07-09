@@ -1,5 +1,7 @@
-﻿using Divine;
-using Divine.SDK.Extensions;
+﻿using Divine.Entity;
+using Divine.Extensions;
+using Divine.Entity.Entities.Abilities.Items;
+using Divine.Entity.Entities.Units.Heroes;
 
 namespace TemplarAssasinDestruction.Abilities.Items
 {

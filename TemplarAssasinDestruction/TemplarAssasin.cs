@@ -1,4 +1,8 @@
-﻿using Divine;
+﻿using Divine.Entity;
+using Divine.Update;
+using Divine.Entity.Entities.Abilities.Components;
+using Divine.Entity.Entities.Abilities.Items;
+using Divine.Entity.Entities.Units.Heroes;
 using System;
 using TemplarAssasinDestruction.Abilities.Items;
 using TemplarAssasinDestruction.Abilities.Spells;

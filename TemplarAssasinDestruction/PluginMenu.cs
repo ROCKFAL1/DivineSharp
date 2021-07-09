@@ -1,6 +1,8 @@
-﻿using Divine;
+﻿using Divine.Entity.Entities.Abilities.Components;
+using Divine.Entity.Entities.Units.Heroes.Components;
 using Divine.Menu;
 using Divine.Menu.Items;
+
 using System.Collections.Generic;
 using System.Windows.Input;
 

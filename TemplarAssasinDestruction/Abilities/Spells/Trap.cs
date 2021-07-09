@@ -1,5 +1,7 @@
-﻿using Divine;
-using Divine.SDK.Extensions;
+﻿using Divine.Entity;
+using Divine.Extensions;
+using Divine.Entity.Entities.Abilities.Spells;
+using Divine.Entity.Entities.Units.Heroes;
 using System.Linq;
 
 namespace TemplarAssasinDestruction.Abilities.Spells

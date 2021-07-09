@@ -1,4 +1,8 @@
-﻿using Divine;
+﻿using Divine.Entity;
+using Divine.Entity.Entities.Abilities.Items;
+using Divine.Entity.Entities.Units.Components;
+using Divine.Entity.Entities.Units.Heroes;
+
 using System;
 using System.Linq;
 

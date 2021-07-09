@@ -1,4 +1,6 @@
-﻿using Divine;
+﻿using Divine.Entity;
+using Divine.Service;
+using Divine.Entity.Entities.Units.Heroes.Components;
 
 namespace TemplarAssasinDestruction
 {
