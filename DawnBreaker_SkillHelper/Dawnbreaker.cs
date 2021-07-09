@@ -1,5 +1,4 @@
-﻿using Divine;
-using Divine.Entity;
+﻿using Divine.Entity;
 using Divine.Entity.Entities.Abilities.Components;
 using Divine.Entity.Entities.Abilities.Spells;
 using Divine.Entity.Entities.Units.Components;

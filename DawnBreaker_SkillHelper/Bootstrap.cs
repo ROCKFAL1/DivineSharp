@@ -1,5 +1,4 @@
-﻿using Divine;
-using Divine.Entity;
+﻿using Divine.Entity;
 using Divine.Entity.Entities.Units.Heroes.Components;
 using Divine.Service;
 

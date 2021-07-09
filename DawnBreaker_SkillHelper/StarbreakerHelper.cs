@@ -1,4 +1,7 @@
-﻿using Divine;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+
 using Divine.Entity;
 using Divine.Entity.Entities.Units;
 using Divine.Entity.Entities.Units.Heroes;
@@ -8,9 +11,6 @@ using Divine.Numerics;
 using Divine.Order;
 using Divine.Order.EventArgs;
 using Divine.Prediction;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 
 namespace DawnBreaker_SkillHelper
 {
