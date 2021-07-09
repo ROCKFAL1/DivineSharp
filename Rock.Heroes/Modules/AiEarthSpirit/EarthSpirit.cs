@@ -1,8 +1,12 @@
-﻿using Divine;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+
 using Divine.Entity;
 using Divine.Entity.Entities;
 using Divine.Entity.Entities.Abilities;
 using Divine.Entity.Entities.Abilities.Components;
+using Divine.Entity.Entities.Units;
 using Divine.Entity.Entities.Units.Buildings;
 using Divine.Entity.Entities.Units.Components;
 using Divine.Entity.Entities.Units.Heroes;
@@ -14,17 +18,12 @@ using Divine.Input;
 using Divine.Input.EventArgs;
 using Divine.Menu.EventArgs;
 using Divine.Menu.Items;
+using Divine.Modifier.Modifiers;
 using Divine.Numerics;
+using Divine.Orbwalker;
 using Divine.Order;
 using Divine.Order.EventArgs;
 using Divine.Update;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Windows.Input;
-using Divine.Modifier.Modifiers;
-using Divine.Entity.Entities.Units;
-using Divine.Orbwalker;
 
 namespace RockHeroes.Modules.EarthSpirit
 {
@@ -72,7 +71,7 @@ namespace RockHeroes.Modules.EarthSpirit
             AiEarthSpiritMenu = context.rootMenu.CreateMenu("AI Earth Spirit").SetHeroImage(HeroId.npc_dota_hero_earth_spirit);
             isEnable = AiEarthSpiritMenu.CreateSwitcher("On/Off");
 
-            holdKey = AiEarthSpiritMenu.CreateHoldKey("Dynamic сombo key", Key.None);
+            holdKey = AiEarthSpiritMenu.CreateHoldKey("Dynamic сombo key", System.Windows.Input.Key.None);
             AutoStone = AiEarthSpiritMenu.CreateSwitcher("Auto Stone if W", false);
             stonesToSave = AiEarthSpiritMenu.CreateSlider("Stones to save", 2, 0, 5);
             autoUltiCount = AiEarthSpiritMenu.CreateSlider("Enemyes for ult", 3, 0, 5).SetTooltip("If set to 0, it doesn't work");
@@ -123,28 +122,28 @@ namespace RockHeroes.Modules.EarthSpirit
 
         private void OnInputManagerKeyDownAlt(KeyEventArgs e)
         {
-            if (e.Key != Key.LeftAlt)
+            if (e.Key != System.Windows.Input.Key.LeftAlt)
                 return;
             IsIgnoreInput = true;
         }
 
         private void OnInputManagerKeyUpAlt(KeyEventArgs e)
         {
-            if (e.Key != Key.LeftAlt)
+            if (e.Key != System.Windows.Input.Key.LeftAlt)
                 return;
             IsIgnoreInput = false;
         }
 
         private void OnInputManagerKeyDownCtrl(KeyEventArgs e)
         {
-            if (e.Key != Key.LeftCtrl)
+            if (e.Key != System.Windows.Input.Key.LeftCtrl)
                 return;
             IsIgnoreInput = true;
         }
 
         private void OnInputManagerKeyUpCtrl(KeyEventArgs e)
         {
-            if (e.Key != Key.LeftCtrl)
+            if (e.Key != System.Windows.Input.Key.LeftCtrl)
                 return;
             IsIgnoreInput = false;
         }
